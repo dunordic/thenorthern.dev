@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import kebabCase from 'lodash/kebabCase';
+import kebabCase from 'lodash.kebabcase';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from '../components';

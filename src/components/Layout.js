@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ThemeProvider } from 'emotion-theming';
 import styled from '@emotion/styled';
 import { css, Global } from '@emotion/core';
 import theme from '../../config/theme';
@@ -14,14 +13,20 @@ const globalStyles = css`
     box-sizing: inherit;
   }
 
+  :root {
+    ${Object.entries(theme.colors).reduce(
+      (acc, [color, value]) => `${acc}--color-${color}: ${value};`
+    )}
+  }
+
   html,
   body {
     padding: 0;
     margin: 0;
   }
   ::selection {
-    color: ${theme.colors.bg};
-    background: ${theme.colors.primary};
+    color: var(--color-bg);
+    background: var(--color-primary);
   }
   html {
     font-family: ${theme.fontFamily.sansSerif};
@@ -61,16 +66,16 @@ const globalStyles = css`
     }
   }
   body {
-    background: ${theme.colors.bg};
-    color: ${theme.colors.grey.default};
+    background: var(--color-bg);
+    color: var(--color-text);
   }
   a {
-    color: ${theme.colors.primary};
+    color: var(--color-primary);
     text-decoration: none;
     transition: all ${theme.transitions.normal};
   }
   a:hover {
-    color: ${theme.colors.primaryLight};
+    color: var(--color-primaryLight)t);
   }
   a:not([href]):not([tabindex]) {
     color: inherit;
@@ -90,7 +95,6 @@ const globalStyles = css`
   h4,
   h5,
   h6 {
-    color: ${theme.colors.grey.dark};
     font-family: ${theme.fontFamily.serif};
   }
   blockquote {
@@ -101,14 +105,13 @@ const globalStyles = css`
   blockquote:before {
     content: '';
     position: absolute;
-    background: ${theme.colors.primary};
+    background: var(--color-primary);
     height: 100%;
     width: 6px;
     margin-left: -1.6rem;
   }
   label {
     margin-bottom: 0.5rem;
-    color: ${theme.colors.grey.dark};
   }
   input,
   textarea,
@@ -155,7 +158,7 @@ const globalStyles = css`
   }
   table {
     border-collapse: collapse;
-    background-color: ${theme.colors.bg};
+    background-color: var(--color-bg);
   }
   caption {
     padding-top: 1.5rem;
@@ -208,21 +211,19 @@ const Layout = ({ children, customSEO }) => {
   const buildTime = useBuildTime();
 
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        {!customSEO && <Seo buildTime={buildTime} />}
-        <Global styles={globalStyles} />
-        {children}
-        <Footer>
-          &copy; 2019 by LekoArts. All rights reserved. <br />
-          <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog">
-            GitHub Repository
-          </a>
-          <br />
-          <span>Last build: {buildTime}</span>
-        </Footer>
-      </>
-    </ThemeProvider>
+    <>
+      {!customSEO && <Seo buildTime={buildTime} />}
+      <Global styles={globalStyles} />
+      {children}
+      <Footer>
+        &copy; 2019 by LekoArts. All rights reserved. <br />
+        <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog">
+          GitHub Repository
+        </a>
+        <br />
+        <span>Last build: {buildTime}</span>
+      </Footer>
+    </>
   );
 };
 

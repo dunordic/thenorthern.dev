@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import kebabCase from 'lodash/kebabCase';
+import kebabCase from 'lodash.kebabcase';
 
 import Subline from './Subline';
 
@@ -23,9 +23,9 @@ const Title = styled.h2`
   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 0.75rem;
   a {
-    color: ${props => props.theme.colors.grey.dark};
+    color: var(--color-grayDark);
     &:hover {
-      color: ${props => props.theme.colors.primaryLight};
+      color: var(--color-primaryLight);
     }
   }
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import kebabCase from 'lodash/kebabCase';
+import kebabCase from 'lodash.kebabcase';
 
 import { Layout, Wrapper, Header, SectionTitle } from '../components';
 import config from '../../config';
