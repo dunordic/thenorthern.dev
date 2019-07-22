@@ -1,6 +1,6 @@
-const config = require('./config')
+const config = require('./config');
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -9,7 +9,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
+    'gatsby-plugin-emotion',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-filesystem',
@@ -73,4 +73,4 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
-}
+};
