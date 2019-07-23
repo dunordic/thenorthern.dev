@@ -1,4 +1,4 @@
-import { lighten, darken, readableColor } from 'polished';
+import { lighten, darken } from 'polished';
 
 const lightness = [
   { lightness: 0.15, suffix: 'est' },
@@ -14,7 +14,7 @@ const baseColors = {
   tertiary: 'hsl(24,57%,70%)',
 };
 
-const colors = Object.entries(baseColors).reduce(
+export const colors = Object.entries(baseColors).reduce(
   (acc, [name, color]) => {
     lightness.forEach(({ lightness: lightnessStep, suffix = '' }) => {
       acc[`${name}Light${suffix}`] = lighten(lightnessStep, color);
@@ -30,32 +30,21 @@ const colors = Object.entries(baseColors).reduce(
     greyLightest: 'rgba(0, 0, 0, 0.25)',
   }
 );
-const transitions = {
+
+export const transitions = {
   normal: '350ms',
 };
 
-const fontSize = {
+export const fontSize = {
   small: '0.9rem',
 };
 
-const fontFamily = {
+export const fontFamily = {
   serif: `'Bitter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', serif`,
   sansSerif: `'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif`,
 };
 
-const breakpoints = {
+export const breakpoints = {
   tablet: '1200px',
   phone: '600px',
 };
-
-const theme = {
-  colors,
-  transitions,
-  fontSize,
-  breakpoints,
-  fontFamily,
-  maxWidth: '1000px',
-  baseFontSize: '18px',
-};
-
-export default theme;

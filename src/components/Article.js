@@ -12,7 +12,7 @@ const Post = styled.article`
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
 
-  @media (max-width: ${props => props.theme.breakpoints.phone}) {
+  @media (max-width: var(--breakpoints-phone)) {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
@@ -25,7 +25,7 @@ const Title = styled.h2`
   a {
     color: var(--color-grayDark);
     &:hover {
-      color: var(--color-primaryLight);
+      color: var(--color-primary-light);
     }
   }
 `;

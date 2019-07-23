@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import kebabCase from 'lodash.kebabcase';
 import { css, Global } from '@emotion/core';
-import theme from '../../config/theme';
+import {
+  colors,
+  transitions,
+  breakpoints,
+  fontSize,
+  fontFamily,
+} from '../../config/theme';
 import useBuildTime from '../hooks/useBuildTime';
 import Seo from './SEO';
+
+const generateStyles = (obj, name) =>
+  Object.entries(obj).reduce(
+    (acc, [key, value]) => `${acc}--${kebabCase(`${name}-${key}`)}: ${value};`,
+    ''
+  );
 
 const globalStyles = css`
   *,
@@ -14,9 +27,17 @@ const globalStyles = css`
   }
 
   :root {
-    ${Object.entries(theme.colors).reduce(
-      (acc, [color, value]) => `${acc}--color-${color}: ${value};`
-    )}
+    ${[
+      [colors, 'colors'],
+      [transitions, 'transitions'],
+      [fontSize, 'fontSize'],
+      [fontFamily, 'fontFamily'],
+      [breakpoints, 'breakpoints'],
+    ]
+      .map(args => generateStyles(...args))
+      .join()}
+    --max-width: 1000px;
+    --font-size-base: 18px;
   }
 
   html,
@@ -29,8 +50,8 @@ const globalStyles = css`
     background: var(--color-primary);
   }
   html {
-    font-family: ${theme.fontFamily.sansSerif};
-    font-size: ${theme.baseFontSize};
+    font-family: var(--font-family-sans-serif);
+    font-size: v;
     h1 {
       font-size: 3.052rem;
     }
@@ -46,7 +67,7 @@ const globalStyles = css`
     h5 {
       font-size: 1.25rem;
     }
-    @media (max-width: ${theme.breakpoints.phone}) {
+    @media (max-width: var(--breakpoints-phone)) {
       font-size: 16px;
       h1 {
         font-size: 2.488rem;
@@ -72,10 +93,10 @@ const globalStyles = css`
   a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: all ${theme.transitions.normal};
+    transition: all var(--transitionis-normal);
   }
   a:hover {
-    color: var(--color-primaryLight)t);
+    color: var(--color-primary-light));
   }
   a:not([href]):not([tabindex]) {
     color: inherit;
@@ -95,7 +116,7 @@ const globalStyles = css`
   h4,
   h5,
   h6 {
-    font-family: ${theme.fontFamily.serif};
+    font-family: var(--font-family-serif);
   }
   blockquote {
     font-style: italic;
@@ -119,7 +140,7 @@ const globalStyles = css`
     font-size: 1rem;
   }
   textarea {
-    font-family: ${theme.fontFamily.sansSerif};
+    font-family: var(--font-family-sans-serif);
   }
   input,
   textarea {
@@ -163,7 +184,7 @@ const globalStyles = css`
   caption {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    color: ${theme.colors.color};
+    color: var(--colors-text);
     text-align: center;
     caption-side: bottom;
   }

@@ -10,10 +10,10 @@ const Content = styled.div`
   box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   padding: 3rem 6rem;
-  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+  @media (max-width: var(--breakpoints-tablet)) {
     padding: 3rem 2rem;
   }
-  @media (max-width: ${props => props.theme.breakpoints.phone}) {
+  @media (max-width: var(--breakpoints-phone)) {
     padding: 2rem 1.5rem;
   }
   overflow: hidden;
@@ -25,17 +25,17 @@ const Hero = styled.div`
   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   color: var(--color-grayDark);
 
-  @media (max-width: ${props => props.theme.breakpoints.phone}) {
+  @media (max-width: var(--breakpoints-phone)) {
     padding: 2rem 1rem 4rem 1rem;
   }
 
   p {
     font-size: 1.68rem;
     margin-top: -1rem;
-    @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    @media (max-width: var(--breakpoints-tablet)) {
       font-size: 1.45rem;
     }
-    @media (max-width: ${props => props.theme.breakpoints.phone}) {
+    @media (max-width: var(--breakpoints-phone)) {
       font-size: 1.25rem;
     }
   }

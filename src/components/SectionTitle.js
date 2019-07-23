@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const SectionTitle = styled.div`
-  font-size: ${props => props.theme.fontSize.small};
+  font-size: var(--font-size-small);
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
@@ -18,7 +18,7 @@ const SectionTitle = styled.div`
     bottom: 0;
     left: 50%;
     margin-left: -25px;
-    background: ${props => props.theme.colors.grey.ultraLight};
+    background: var(--colors-grey-lightest);
   }
 `;
 

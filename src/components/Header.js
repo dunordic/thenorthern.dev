@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { darken, lighten } from 'polished';
+import { colors } from '../../config/theme';
 
 const Wrapper = styled.header`
   background: linear-gradient(
     45deg,
-    ${props => darken(0.1, props.theme.colors.primary)},
-    ${props => lighten(0.1, props.theme.colors.primary)}
+    ${darken(0.1, colors.primary)},
+    ${lighten(0.1, colors.primary)}
   );
   grid-column: 1 / -1;
   margin-left: -1rem;
@@ -17,15 +18,15 @@ const Wrapper = styled.header`
 `;
 
 const Content = styled.div`
-  max-width: ${props => props.theme.maxWidth};
+  max-width: var(--max-width);
   margin: 0 auto;
 
   a {
-    color: ${props => props.theme.colors.white};
+    color: white;
     font-size: 1.2rem;
     &:hover {
       opacity: 0.85;
-      color: ${props => props.theme.colors.white};
+      color: white;
     }
   }
 `;
