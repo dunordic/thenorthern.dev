@@ -20,6 +20,17 @@ const generateStyles = (obj, name) =>
   );
 
 const globalStyles = css`
+
+  @font-face {
+    font-family: 'League Spartan VF';
+    src: url('LeagueSpartanVariable.ttf');
+  }
+
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('FiraCode-VF.ttf');
+  }
+
   *,
   *:before,
   *:after {

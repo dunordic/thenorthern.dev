@@ -1,5 +1,3 @@
-/* eslint jsx-a11y/label-has-for:0 */
-
 import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
@@ -23,7 +21,7 @@ const Content = styled.div`
     padding: 2rem 1.5rem;
   }
   form {
-    p {
+    & > div {
       label,
       input {
         display: block;
@@ -65,27 +63,27 @@ const Contact = () => (
           data-netlify-honeypot="bot-field"
           action="/success"
         >
-          <p>
+          <div>
             <label htmlFor="contact-name">
               Name
               <input name="name" id="contact-name" type="text" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="contact-email">
               E-Mail{' '}
               <input name="email" id="contact-email" type="email" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <label htmlFor="contact-message">
               Your Message{' '}
               <textarea name="message" id="contact-message" required />
             </label>
-          </p>
-          <p>
+          </div>
+          <div>
             <Button>Send</Button>
-          </p>
+          </div>
           <input type="hidden" name="form-name" value="contact-form" />
         </form>
       </Content>
