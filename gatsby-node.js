@@ -64,7 +64,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const categorySet = posts.reduce((acc, post) => {
     const categories = delve(post, 'frontmatter.categories');
-    if (categories) categories.foreach(acc.add);
+    if (categories && Array.isArray(categories))
+      categories.forEach(acc.add.bind(acc));
+    return acc;
   }, new Set());
 
   const categories = Array.from(categorySet);

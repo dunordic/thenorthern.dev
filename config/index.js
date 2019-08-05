@@ -4,7 +4,7 @@ module.exports = {
   siteTitle: 'The Northern Dev', // Navigation and Site Title
   siteTitleAlt: 'The Northern Dev - blog', // Alternative Site title for SEO
   siteTitleManifest: 'MinimalBlog',
-  siteUrl: 'https://minimal-blog.lekoarts.de', // Domain of your site. No trailing slash!
+  siteUrl: 'https://thenorthern.devsla', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteHeadline: 'Writing and publishing content', // Headline for schema.org JSONLD
   siteBanner: '/social/banner.jpg', // Your image for og:image tag. You can find it in the /static folder
@@ -18,7 +18,7 @@ module.exports = {
   userTwitter: '@hankandre', // Twitter Username - Optional
   ogSiteName: 'The Northern Dev', // Facebook Site Name - Optional
   ogLanguage: 'en_US', // Facebook Language
-  googleAnalyticsID: 'UA-47519312-6',
+  googleAnalyticsID: '',
 
   // Manifest and Progress color
   // See: https://developers.google.com/web/fundamentals/web-app-manifest/

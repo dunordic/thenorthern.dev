@@ -29,6 +29,7 @@
     "lodash.isempty": "^4.4.0",
     "lodash.kebabcase": "^4.1.1",
     "mdx-utils": "0.2.0",
+    "normalize.css": "^8.0.1",
     "polished": "^3.4.1",
     "prism-react-renderer": "^0.1.7",
     "prop-types": "^15.7.2",
