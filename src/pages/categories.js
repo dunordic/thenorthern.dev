@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import kebabCase from 'lodash.kebabcase';
 
-import { Layout, Wrapper, Header, SectionTitle } from '../components';
+import { Layout } from '../components';
 import config from '../../config';
 
 const Content = styled.div`
@@ -36,23 +36,17 @@ const Category = ({
   },
 }) => (
   <Layout>
-    <Wrapper>
-      <Helmet title={`Categories | ${config.siteTitle}`} />
-      <Header>
-        <Link to="/">{config.siteTitle}</Link>
-      </Header>
-      <Content>
-        <SectionTitle>Categories</SectionTitle>
-        {group.map(category => (
-          <Title key={category.fieldValue}>
-            <Link to={`/categories/${kebabCase(category.fieldValue)}`}>
-              {category.fieldValue}
-            </Link>{' '}
-            ({category.totalCount})
-          </Title>
-        ))}
-      </Content>
-    </Wrapper>
+    <Helmet title={`Categories | ${config.siteTitle}`} />
+    <Content>
+      {group.map(category => (
+        <Title key={category.fieldValue}>
+          <Link to={`/categories/${kebabCase(category.fieldValue)}`}>
+            {category.fieldValue}
+          </Link>{' '}
+          ({category.totalCount})
+        </Title>
+      ))}
+    </Content>
   </Layout>
 );
 

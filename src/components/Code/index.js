@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
@@ -40,6 +41,11 @@ const Code = ({ codeString, language, ...props }) => {
       )}
     </Highlight>
   );
+};
+
+Code.propTypes = {
+  codeString: PropTypes.string,
+  language: PropTypes.string,
 };
 
 export default Code;

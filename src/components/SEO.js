@@ -174,14 +174,13 @@ const SEO = props => {
       <meta name="twitter:image" content={image} />
       <meta name="twitter:image:alt" content={description} />
       {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
-      {!article && (
-        <script type="application/ld+json">
-          {JSON.stringify(schemaOrgWebPage)}
-        </script>
-      )}
-      {article && (
+      {article ? (
         <script type="application/ld+json">
           {JSON.stringify(schemaArticle)}
+        </script>
+      ) : (
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgWebPage)}
         </script>
       )}
       <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>

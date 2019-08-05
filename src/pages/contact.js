@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
-import { Layout, Wrapper, Header, Button } from '../components';
+import { Layout } from '../components';
 
 import config from '../../config';
 
@@ -45,49 +45,44 @@ const Content = styled.div`
 
 const Contact = () => (
   <Layout>
-    <Wrapper>
-      <Helmet title={`Contact | ${config.siteTitle}`} />
-      <Header>
-        <Link to="/">{config.siteTitle}</Link>
-      </Header>
-      <Content>
-        <h1>Contact</h1>
-        <p>
-          Super cool intro text to get people contacting me! It uses Netlify's
-          form feature.
-        </p>
-        <form
-          name="contact-form"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          action="/success"
-        >
-          <div>
-            <label htmlFor="contact-name">
-              Name
-              <input name="name" id="contact-name" type="text" required />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="contact-email">
-              E-Mail{' '}
-              <input name="email" id="contact-email" type="email" required />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="contact-message">
-              Your Message{' '}
-              <textarea name="message" id="contact-message" required />
-            </label>
-          </div>
-          <div>
-            <Button>Send</Button>
-          </div>
-          <input type="hidden" name="form-name" value="contact-form" />
-        </form>
-      </Content>
-    </Wrapper>
+    <Helmet title={`Contact | ${config.siteTitle}`} />
+    <Content>
+      <h1>Contact</h1>
+      <p>
+        Super cool intro text to get people contacting me! It uses Netlify's
+        form feature.
+      </p>
+      <form
+        name="contact-form"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        action="/success"
+      >
+        <div>
+          <label htmlFor="contact-name">
+            Name
+            <input name="name" id="contact-name" type="text" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="contact-email">
+            E-Mail{' '}
+            <input name="email" id="contact-email" type="email" required />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="contact-message">
+            Your Message{' '}
+            <textarea name="message" id="contact-message" required />
+          </label>
+        </div>
+        <div>
+          <button>Send</button>
+        </div>
+        <input type="hidden" name="form-name" value="contact-form" />
+      </form>
+    </Content>
   </Layout>
 );
 
