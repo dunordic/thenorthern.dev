@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/vsDark';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import styled from '@emotion/styled';
-
-const StyledEditor = styled(LiveEditor)`
-  background: ${theme.plain.backgroundColor};
-  border-radius: 5px;
-  margin-bottom: 1rem;
-`;
 
 const Code = ({ codeString, language, ...props }) => {
   if (props['react-live']) {
     return (
       <LiveProvider code={codeString} noInline={true} theme={theme}>
-        <StyledEditor />
+        <LiveEditor
+          css={css`
+            background: ${theme.plain.backgroundColor};
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-family: var(--font-family-mono);
+          `}
+        />
         <LiveError />
         <LivePreview />
       </LiveProvider>
@@ -31,8 +32,10 @@ const Code = ({ codeString, language, ...props }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (
+            // eslint-disable-next-line react/jsx-key
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
+                // eslint-disable-next-line react/jsx-key
                 <span {...getTokenProps({ token, key })} />
               ))}
             </div>
@@ -46,6 +49,7 @@ const Code = ({ codeString, language, ...props }) => {
 Code.propTypes = {
   codeString: PropTypes.string,
   language: PropTypes.string,
+  'react-live': PropTypes.bool,
 };
 
 export default Code;

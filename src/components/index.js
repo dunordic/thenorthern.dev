@@ -1,5 +1,4 @@
-import Layout from './Layout';
-import PrevNext from './PrevNext';
-import SEO from './SEO';
-
-export { Layout, PrevNext, SEO };
+export { default as PrevNext } from './PrevNext';
+export { default as Layout } from './Layout';
+export { default as SEO } from './SEO';
+export { default as Heading } from './Heading';

@@ -1,4 +1,4 @@
-const kebabCase = require('lodash.kebabcase');
+const { kebabCase } = require('lodash');
 const delve = require('dlv');
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually

@@ -1,45 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
-import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-import { Layout, Article, Wrapper, Button, SectionTitle } from '../components';
+import { graphql } from 'gatsby';
 
-const Content = styled.div`
-  grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  padding: 3rem 6rem;
-  @media (max-width: var(--breakpoints-tablet)) {
-    padding: 3rem 2rem;
-  }
-  @media (max-width: var(--breakpoints-phone)) {
-    padding: 2rem 1.5rem;
-  }
-  overflow: hidden;
-`;
+import {
+  Layout,
+  Heading,
+} from /*Article, Wrapper, Button, SectionTitle*/ '../components';
 
-const Hero = styled.div`
-  grid-column: 2;
-  padding: 3rem 2rem 6rem 2rem;
-  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  color: var(--color-grayDark);
+// const Content = styled.div`
+//   grid-column: 2;
+//   box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+//   border-radius: 1rem;
+//   padding: 3rem 6rem;
+//   @media (max-width: var(--breakpoints-tablet)) {
+//     padding: 3rem 2rem;
+//   }
+//   @media (max-width: var(--breakpoints-phone)) {
+//     padding: 2rem 1.5rem;
+//   }
+//   overflow: hidden;
+// `;
 
-  @media (max-width: var(--breakpoints-phone)) {
-    padding: 2rem 1rem 4rem 1rem;
-  }
+// const Hero = styled.div`
+//   grid-column: 2;
+//   padding: 3rem 2rem 6rem 2rem;
+//   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+//   color: var(--color-grayDark);
 
-  p {
-    font-size: 1.68rem;
-    margin-top: -1rem;
-    @media (max-width: var(--breakpoints-tablet)) {
-      font-size: 1.45rem;
-    }
-    @media (max-width: var(--breakpoints-phone)) {
-      font-size: 1.25rem;
-    }
-  }
-`;
+//   @media (max-width: var(--breakpoints-phone)) {
+//     padding: 2rem 1rem 4rem 1rem;
+//   }
+
+//   p {
+//     font-size: 1.68rem;
+//     margin-top: -1rem;
+//     @media (max-width: var(--breakpoints-tablet)) {
+//       font-size: 1.45rem;
+//     }
+//     @media (max-width: var(--breakpoints-phone)) {
+//       font-size: 1.25rem;
+//     }
+//   }
+// `;
 
 const IndexPage = ({
   data: {
@@ -47,7 +51,33 @@ const IndexPage = ({
   },
 }) => (
   <Layout>
-    <Wrapper>
+    <div
+      css={css`
+        max-width: 60ch;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+      `}
+    >
+      <Heading level={1} css={{ margin: '0 auto 2px' }}>
+        hello world
+      </Heading>
+      <p>
+        Iaculis conubia vehicula ligula dignissim imperdiet scelerisque quis
+        viverra, sapien eros metus parturient velit fringilla sollicitudin,
+        class lacinia habitasse nisi dictum semper adipiscing. Suscipit ut
+        adipiscing nostra commodo montes ac fusce, nam felis facilisis et leo
+        tempus, suspendisse semper convallis molestie neque est. Ac condimentum
+        cursus lectus augue ultricies cubilia habitant, sociosqu ante velit
+        magna diam fusce, elementum nibh proin class sociis congue. Ornare quis
+        maecenas torquent cras himenaeos vel luctus, sollicitudin mattis quam
+        cursus consectetur nibh lectus, tortor ac commodo pharetra vulputate
+        vehicula. Nisi nunc torquent commodo egestas tristique litora mollis
+        neque, suscipit nisl magna condimentum platea leo consequat, quis
+        quisque duis lacinia lacus fusce convallis.
+      </p>
+    </div>
+    {/* <Wrapper>
       <Hero>
         <h1>Hi.</h1>
         <p>
@@ -83,7 +113,7 @@ const IndexPage = ({
           />
         ))}
       </Content>
-    </Wrapper>
+    </Wrapper> */}
   </Layout>
 );
 

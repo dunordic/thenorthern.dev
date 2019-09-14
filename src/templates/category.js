@@ -1,44 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import { Link, graphql } from 'gatsby';
+// import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 
 import {
   Layout,
-  Wrapper,
-  Header,
-  Subline,
-  Article,
-  SectionTitle,
+  // Wrapper,
+  // Header,
+  // Subline,
+  // Article,
+  // SectionTitle,
 } from '../components';
 import config from '../../config';
 
-const Content = styled.div`
-  grid-column: 2;
-  box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
-  border-radius: 1rem;
-  padding: 2rem 4rem;
-  background-color: var(--colors-bg);
-  z-index: 9000;
-  margin-top: -3rem;
-  @media (max-width: var(--breakpoints-tablet)) {
-    padding: 3rem 3rem;
-  }
-  @media (max-width: var(--breakpoints-phone)) {
-    padding: 2rem 1.5rem;
-  }
-`;
+// const Content = styled.div`
+//   grid-column: 2;
+//   box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+//   border-radius: 1rem;
+//   padding: 2rem 4rem;
+//   background-color: var(--colors-bg);
+//   z-index: 9000;
+//   margin-top: -3rem;
+//   @media (max-width: var(--breakpoints-tablet)) {
+//     padding: 3rem 3rem;
+//   }
+//   @media (max-width: var(--breakpoints-phone)) {
+//     padding: 2rem 1.5rem;
+//   }
+// `;
 
 const Category = ({ pageContext: { category }, data: { allMdx } }) => {
-  const { nodes, totalCount } = allMdx;
-  const subline = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-  } tagged with "${category}"`;
+  // const { nodes, totalCount } = allMdx;
+  // const singularOrPlural = totalCount > 1 ? 'posts' : 'post'
+  // const subline = `${totalCount} ${singularOrPlural} tagged with "${category}"`;
 
   return (
     <Layout>
-      <Wrapper>
+      Category
+      {/* <Wrapper>
         <Helmet title={`Category: ${category} | ${config.siteTitle}`} />
         <Header>
           <Link to="/">{config.siteTitle}</Link>
@@ -60,7 +60,7 @@ const Category = ({ pageContext: { category }, data: { allMdx } }) => {
             />
           ))}
         </Content>
-      </Wrapper>
+      </Wrapper> */}
     </Layout>
   );
 };

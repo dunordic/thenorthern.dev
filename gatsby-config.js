@@ -56,6 +56,7 @@ module.exports = {
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-webpack-bundle-analyser-v2',
     'gatsby-plugin-lodash',
     {
       resolve: 'gatsby-plugin-manifest',

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import kebabCase from 'lodash.kebabcase';
+import { kebabCase } from 'lodash';
 import { css, Global } from '@emotion/core';
+import { normalize } from 'polished';
+import PTRootVF from '../pt-root-vf.ttf';
+import LeagueSpartan from '../LeagueSpartanVariable.ttf';
+import FiraCode from '../FiraCode-VF.ttf';
 import {
   colors,
   transitions,
@@ -14,20 +17,25 @@ import useBuildTime from '../hooks/useBuildTime';
 import Seo from './SEO';
 
 const generateStyles = (obj, name) =>
-  Object.entries(obj).reduce(
-    (acc, [key, value]) => `${acc}--${kebabCase(`${name}-${key}`)}: ${value};`,
-    ''
-  );
+  Object.entries(obj)
+    .map(([key, value]) => `--${kebabCase(`${name}-${key}`)}: ${value}`)
+    .join(';');
 
 const globalStyles = css`
+  ${normalize()}
   @font-face {
     font-family: 'League Spartan VF';
-    src: url('LeagueSpartanVariable.ttf');
+    src: url(${LeagueSpartan});
+  }
+
+  @font-face {
+    font-family: 'PT-Root';
+    src: url(${PTRootVF});
   }
 
   @font-face {
     font-family: 'FiraCode';
-    src: url('FiraCode-VF.ttf');
+    src: url(${FiraCode});
   }
 
   *,
@@ -45,28 +53,25 @@ const globalStyles = css`
       [breakpoints, 'breakpoints'],
     ]
       .map(args => generateStyles(...args))
-      .join()}
+      .join(';')};
     --max-width: 1000px;
-    --font-size-base: 18px;
   }
 
   html,
   body {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
   }
-  ::selection {
-    color: var(--color-bg);
-    background: var(--color-primary);
+  body {
+    background: var(--colors-bg);
+    color: var(--colors-text);
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-base);
+    font-variation-settings: 'wght' 300;
+    line-height: 1.5;
   }
-`;
-
-const Footer = styled.footer`
-  text-align: center;
-  padding: 3rem 1rem;
-  span {
-    font-size: 0.75rem;
+  ::selection {
+    color: var(--colors-bg);
+    background: var(--colors-secondary-light);
   }
 `;
 
@@ -78,14 +83,6 @@ const Layout = ({ children, customSEO }) => {
       {!customSEO && <Seo buildTime={buildTime} />}
       <Global styles={globalStyles} />
       {children}
-      <Footer>
-        &copy; 2019 by LekoArts. All rights reserved. <br />
-        <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog">
-          GitHub Repository
-        </a>
-        <br />
-        <span>Last build: {buildTime}</span>
-      </Footer>
     </>
   );
 };
