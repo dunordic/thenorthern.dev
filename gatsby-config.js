@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog MDX`,
-    author: `Matt Hagner`,
-    description: `An extension of the gatsby starter blog, with support for MDX`,
-    siteUrl: `https://gatsby-starter-blog-mdx-demo.netlify.com/`,
+    title: `The Northern Dev`,
+    author: `Hank Andre`,
+    description: `Musing about frontend development and other things`,
+    siteUrl: `https://thenorthern.dev/`,
     social: {
-      twitter: `mattinthecouch`,
+      twitter: `hankandre`,
     },
   },
   plugins: [
@@ -27,11 +27,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        // a workaround to solve mdx-remark plugin compat issue
+        // A workaround to solve mdx-remark plugin compat issue
         // https://github.com/gatsbyjs/gatsby/issues/15486
-        plugins: [
-          `gatsby-remark-images`,
-        ],
+        plugins: [`gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -60,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // `trackingId`: `ADD YOUR TRACKING ID HERE`,
       },
     },
     {
@@ -79,19 +77,18 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  data: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.body }],
-                })
-              })
-            },
+            serialize: ({ query: { site, allMdx } }) =>
+              allMdx.edges.map(edge => ({
+                ...edge.node.frontmatter,
+                description: edge.node.excerpt,
+                data: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl.concat(edge.node.fields.slug),
+                guid: site.siteMetadata.siteUrl.concat(edge.node.fields.slug),
+                // eslint-disable-next-line camelcase
+                custom_elements: [{ 'content:encoded': edge.node.body }],
+              })),
 
-            /* if you want to filter for only published posts, you can do
+            /* If you want to filter for only published posts, you can do
              * something like this:
              * filter: { frontmatter: { published: { ne: false } } }
              * just make sure to add a published frontmatter field to all posts,
@@ -125,22 +122,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `The Northern Dev`,
+        /* eslint-disable camelcase */
+        short_name: `The Northern Dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
+        /* eslint-enable camelcase */
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    'gatsby-plugin-linaria',
   ],
 }

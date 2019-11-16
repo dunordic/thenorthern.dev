@@ -1,68 +1,85 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import path from 'ramda/src/path'
+import pick from 'ramda/src/pick'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
-import Bio from '../components/Bio'
-import Layout from '../components/Layout'
-import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.mdx
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
-    console.log(this.props.pageContext)
+const BlogPostTemplate = props => {
+  const post = path(['data', 'mdx'], props)
+  const siteTitle = path(['data', 'site', 'siteMetadata', 'title'], props)
+  const { previous, next } = pick('pageContext', props)
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
+  return (
+    <Layout title={siteTitle}>
+      <Seo title={post.frontmatter.title} description={post.excerpt} />
+      <h1>{post.frontmatter.title}</h1>
+      <p
+        style={{
+          display: `block`,
+          marginBottom: 'calc(var(--spacing) *1)',
+          marginTop: 'calc(var(--spacing) *-1)',
+        }}
+      >
+        {post.frontmatter.date}
+      </p>
+      <MDXRenderer>{post.body}</MDXRenderer>
+      <hr
+        style={{
+          marginBottom: 'calc(var(--spacing) *1)',
+        }}
+      />
+      <Bio />
 
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Layout>
-    )
-  }
+      <ul
+        style={{
+          display: `flex`,
+          flexWrap: `wrap`,
+          justifyContent: `space-between`,
+          listStyle: `none`,
+          padding: 0,
+        }}
+      >
+        <li>
+          {previous && (
+            <Link to={previous.fields.slug} rel="prev">
+              ← {previous.frontmatter.title}
+            </Link>
+          )}
+        </li>
+        <li>
+          {next && (
+            <Link to={next.fields.slug} rel="next">
+              {next.frontmatter.title} →
+            </Link>
+          )}
+        </li>
+      </ul>
+    </Layout>
+  )
+}
+
+const frontmatter = PropTypes.shape({
+  excerpt: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+})
+
+BlogPostTemplate.propTypes = {
+  pageContext: PropTypes.shape({
+    next: PropTypes.shape({
+      frontmatter,
+    }),
+  }),
+  data: PropTypes.shape({
+    mdx: PropTypes.shape({
+      frontmatter,
+    }),
+  }),
 }
 
 export default BlogPostTemplate
