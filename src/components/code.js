@@ -5,7 +5,6 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import owlLight from 'prism-react-renderer/themes/nightOwlLight'
 
 const Code = ({ codeString, language = 'js', 'react-live': reactLive }) => {
-  console.log({ reactLive, codeString })
   if (reactLive) {
     return (
       <LiveProvider noInline theme={owlLight} code={codeString}>
