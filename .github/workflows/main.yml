@@ -27,4 +27,6 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy
-        run: now public -t ${{ secret.ZEIT_TOKEN }}
+        env:
+          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+        run: now public -t ZEIT_TOKEN
