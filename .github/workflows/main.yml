@@ -15,9 +15,6 @@ jobs:
         run: yarn eslint "**/*.js"
       - name: Test
         run: yarn test
-      - name: CodeCov
-        uses: Atrox/codecov-action@v0.1.2
-        env: ${{ secrets.CODECOV_TOKEN }}
 
   deploy:
     runs-on: [ubuntu-latest]
