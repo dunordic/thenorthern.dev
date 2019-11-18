@@ -27,8 +27,4 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy
-        run: now public -t ${{ secrets.ZEIT_TOKEN }}
-      - name: Alias
-        branches:
-          - master
-        run: now alias
+        run: now public -t ${{ secret.ZEIT_TOKEN }}
