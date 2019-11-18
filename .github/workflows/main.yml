@@ -14,7 +14,7 @@ jobs:
       - name: Lint
         run: yarn eslint "**/*.js"
       - name: Test
-        run: CI=true yarn test
+        run: yarn test
       - name: CodeCov
         uses: Atrox/codecov-action@v0.1.2
         env: ${{ secrets.CODECOV_TOKEN }}
