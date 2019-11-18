@@ -11,17 +11,28 @@ jobs:
       - uses: actions/checkout@v1
       - name: Install
         run: yarn install
-      - name: Lint
-        run: yarn eslint "**/*.js"
       - name: Test
         run: yarn test
+  
+  lint:
+    runs-on: [ubuntu-latest]
+    container:
+      image: node:latest
+    steps:
+      - uses: actions/checkout@v1
+       - name: Install
+        run: yarn install
+      - name: Lint
+        run: yarn eslint "**/*.js"
+        
 
   deploy:
     runs-on: [ubuntu-latest]
     container:
       image: node:latest
-    needs: [test]
+    needs:[test, lint]
     steps:
+      - actions/checkout@v1
       - name: Install
         run: yarn install
       - name: Build
