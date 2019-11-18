@@ -25,4 +25,4 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy
-        uses: actions/zeit-now@master
+        uses: docker://zeit/deploy
