@@ -29,4 +29,4 @@ jobs:
       - name: Deploy
         env:
           ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
-        run: now public -t ZEIT_TOKEN
+        run: yarn now -t $ZEIT_TOKEN
