@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Lint
-        uses: gimenete/eslint-action@1.0
+        run: yarn eslint "**/*.js"
       - name: Test
-        uses: stefanoeb/jest-action@master
+        run: CI=true yarn test
       - name: CodeCov
         uses: Atrox/codecov-action@v0.1.2
         env: ${{ secrets.CODECOV_TOKEN }}
