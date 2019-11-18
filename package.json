@@ -11,6 +11,8 @@
     "@mdx-js/mdx": "^1.4.0",
     "@mdx-js/react": "^1.4.0",
     "@mdx-js/tag": "^0.20.3",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
     "gatsby": "^2.14.4",
     "gatsby-image": "^2.0.22",
     "gatsby-plugin-feed": "^2.0.8",
@@ -28,6 +30,8 @@
     "gatsby-source-filesystem": "^2.0.2",
     "gatsby-transformer-remark": "^2.1.6",
     "gatsby-transformer-sharp": "^2.1.3",
+    "jest-chain": "^1.1.2",
+    "jest-extended": "^0.11.2",
     "linaria": "^1.3.1",
     "mdx-utils": "^0.2.0",
     "polished": "^3.4.2",
@@ -40,12 +44,22 @@
     "react-live": "^2.2.1"
   },
   "devDependencies": {
-    "eslint-config-xo-react": "^0.20.0",
+    "@babel/core": "^7.7.2",
+    "babel-jest": "^24.9.0",
+    "babel-preset-gatsby": "^0.2.22",
+    "cypress": "^3.6.1",
+    "eslint": "^6.6.0",
+    "eslint-config-kentcdodds": "^14.6.1",
+    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-unicorn": "^13.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "linaria-jest": "^0.0.4",
     "prettier": "^1.14.2",
     "prop-types": "^15.7.2",
-    "xo": "^0.25.3"
+    "react-test-renderer": "^16.12.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://www.thenorthern.dev",
   "keywords": [
     "gatsby"
   ],
@@ -53,7 +67,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/hankandre/thenorthern.dev"
   },
   "scripts": {
     "dev": "gatsby develop",
@@ -64,16 +78,5 @@
     "start": "npm run develop",
     "build": "gatsby build",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
-  },
-  "xo": {
-    "space": true,
-    "prettier": true,
-    "extends": [
-      "xo/esnext",
-      "xo-react"
-    ],
-    "rules": {
-      "react/require-default-props": "off"
-    }
   }
 }

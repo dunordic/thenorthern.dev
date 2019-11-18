@@ -22,6 +22,7 @@ const Code = ({ codeString, language = 'js', 'react-live': reactLive }) => {
       code={codeString}
       language={language}
     >
+      {/* eslint-disable-next-line unicorn/prevent-abbreviations */}
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
           {tokens.map((line, i) => (

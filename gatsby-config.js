@@ -84,7 +84,7 @@ module.exports = {
                 data: edge.node.frontmatter.date,
                 url: site.siteMetadata.siteUrl.concat(edge.node.fields.slug),
                 guid: site.siteMetadata.siteUrl.concat(edge.node.fields.slug),
-                // eslint-disable-next-line camelcase
+                // eslint-disable-next-line babel/camelcase
                 custom_elements: [{ 'content:encoded': edge.node.body }],
               })),
 
@@ -123,14 +123,14 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `The Northern Dev`,
-        /* eslint-disable camelcase */
+        /* eslint-disable babel/camelcase */
         short_name: `The Northern Dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
-        /* eslint-enable camelcase */
+        /* eslint-enable babel/camelcase */
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/logo.png`,
       },
     },
     `gatsby-plugin-offline`,
